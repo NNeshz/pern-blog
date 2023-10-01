@@ -93,6 +93,6 @@ export const profile = async (req, res) => {
       email: response.rows[0].email,
     });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ status: "error", message: error.message });
   }
 };

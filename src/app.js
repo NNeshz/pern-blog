@@ -6,6 +6,7 @@ import {pool} from './db.js'
 
 // Routes:
 import authRoutes from './routes/auth.routes.js';
+import blogRoutes from './routes/blog.routes.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', authRoutes);
+app.use('/api', blogRoutes);
 
 
 // Test routes:
