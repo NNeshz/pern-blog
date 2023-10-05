@@ -8,7 +8,3 @@ export const pool = new pg.Pool({
   user: PGUSER,
   host: PGHOST,
 });
-
-pool.on("connect", () => {
-  console.log(">>> Base de datos conectada");
-});

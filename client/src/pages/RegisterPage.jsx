@@ -1,7 +1,55 @@
+import { useForm } from "react-hook-form";
+import { useUser } from "../context/userContext";
+import { useNavigate, Link } from "react-router-dom";
+
+import { Card, Label, Input, Container, Button } from "../components/ui";
+
 function RegisterPage() {
+  const { handleSubmit, register } = useForm();
+  const { signup } = useUser();
+  const navigate = useNavigate();
+
+  const onSubmit = handleSubmit(async (data) => {
+    const user = await signup(data);
+    if(user) navigate("/");
+  });
+
   return (
-    <div>RegisterPage</div>
-  )
+    <Container className="h-[calc(100vh-10rem)] flex items-center justify-center">
+      <Card>
+        <form onSubmit={onSubmit}>
+          <h1 className="text-xl font-bold my-2">Register in RealBlog</h1>
+          <Label>Username:</Label>
+          <Input
+            placeholder="Enter yout username..."
+            {...register("username", {
+              required: true,
+            })}
+          />
+          <Label>Email:</Label>
+          <Input
+            type="email"
+            placeholder="Enter yout email..."
+            {...register("email", {
+              required: true,
+            })}
+          />
+          <Label>Password:</Label>
+          <Input
+            type="password"
+            placeholder="Enter yout password..."
+            {...register("password", {
+              required: true,
+            })}
+          />
+          <Button>Register</Button>
+          <p className="mt-2">
+            Already have an account? <Link to="/login" className="text-blue-600">Login</Link>
+          </p>
+        </form>
+      </Card>
+    </Container>
+  );
 }
 
-export default RegisterPage
+export default RegisterPage;
