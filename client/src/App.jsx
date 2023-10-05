@@ -32,7 +32,7 @@ function App() {
           </Route>
           <Route path="/profile" element={<h1>Profile</h1>} />
         </Route>
-        {/* Not found */}
+        <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </div>
   );

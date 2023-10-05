@@ -18,7 +18,7 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isAuth, setIsAuth] = useState(false);
   const [errors, setErrors] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const signup = async (user) => {
     try {
@@ -58,7 +58,7 @@ export function UserProvider({ children }) {
 
   useEffect(() => {
     setLoading(true);
-    if (Cookie.get("true")) {
+    if (Cookie.get("token")) {
       axios
         .get("/profile")
         .then((res) => {

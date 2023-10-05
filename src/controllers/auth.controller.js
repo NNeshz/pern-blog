@@ -81,7 +81,6 @@ export const logout = async (req, res) => {
 
 export const profile = async (req, res) => {
   try {
-    console.log(req.user_id);
     const response = await pool.query(
       "SELECT username, email FROM users WHERE user_id = $1",
       [req.user_id]
