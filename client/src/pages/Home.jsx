@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Container } from "../components/ui";
 import BlogForm from "../components/BlogForm/BlogForm.jsx";
-import { useBlog } from "../context/BlogContext";
+import { useBlog } from "../context/blogContext";
 
 import { useEffect } from "react";
 
