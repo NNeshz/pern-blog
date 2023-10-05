@@ -14,11 +14,13 @@ export const signupUser = (user) => async (dispatch) => {
     const { data } = await axios.post("/signup", user);
     dispatch(signupSucces(data));
   } catch (error) {
-    console.log(error)
-    if (!Array.isArray(error.response.data)) {
-      dispatch(signupFail([error.response.data.message]));
+    let errorMessages = [];
+    if (Array.isArray(error.response.data)) {
+      errorMessages = error.response.data;
+    } else {
+      errorMessages.push(error.response.data.message);
     }
-    dispatch(signupFail(error.response.data));
+    dispatch(signupFail(errorMessages));
   }
 };
 
@@ -28,9 +30,12 @@ export const signinUser = (user) => async (dispatch) => {
     const { data } = await axios.post("/signin", user);
     dispatch(signinSucces(data));
   } catch (error) {
+    let errorMessages = [];
     if (Array.isArray(error.response.data)) {
-      dispatch(signinFail(error.response.data));
+      errorMessages = error.response.data;
+    } else {
+      errorMessages.push(error.response.data.message);
     }
-    dispatch(signinFail([error.response.data.message]));
+    dispatch(signinFail(errorMessages));
   }
 };
