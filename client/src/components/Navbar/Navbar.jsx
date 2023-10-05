@@ -10,7 +10,7 @@ function Navbar() {
 
   return (
     <Container>
-      <navbar className="flex justify-between pt-10">
+      <nav className="flex justify-between pt-10">
         <div>
           <Link to="/" className="text-2xl font-bold">
             RealBlog
@@ -45,7 +45,7 @@ function Navbar() {
                 ))}
           </ul>
         </div>
-      </navbar>
+      </nav>
     </Container>
   );
 }
