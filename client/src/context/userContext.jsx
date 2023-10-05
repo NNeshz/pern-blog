@@ -66,9 +66,10 @@ export function UserProvider({ children }) {
           setIsAuth(true);
         })
         .catch((err) => {
-          console.log(err);
-          setUser(null);
-          setIsAuth(false);
+          if (err) {
+            setUser(null);
+            setIsAuth(false);
+          }
         });
     }
     setLoading(false);
