@@ -9,8 +9,6 @@ function RegisterPage() {
   const { signup, errors: RegisterErrors } = useUser();
   const navigate = useNavigate();
 
-  console.log("RegisterErrors", RegisterErrors)
-
   const onSubmit = handleSubmit(async (data) => {
     const user = await signup(data);
     if(user) navigate("/home");
