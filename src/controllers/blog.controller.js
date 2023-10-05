@@ -13,7 +13,7 @@ export const getAllBlogs = async (req, res) => {
     if (blogResponse.rowCount === 0)
       return res
         .status(200)
-        .json({ status: "success", message: "No blogs found" });
+        .json([]);
 
     // Agrupar los comentarios por blog_id
     const blogsWithComments = blogResponse.rows.reduce((acc, blog) => {
