@@ -51,7 +51,7 @@ export function UserProvider({ children }) {
   };
 
   const signout = async () => {
-    await axios.get("/logout");
+    await axios.post("/logout");
     setUser(null);
     setIsAuth(false);
   };
